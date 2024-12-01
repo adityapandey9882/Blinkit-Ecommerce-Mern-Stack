@@ -13,12 +13,16 @@ const app = express()
 //     credentials: true,
 //     origin : process.env.FRONTEND_URL
 // }))
+const allowedOrigin = "http://localhost:5173/"
+// app.use(cors({
+//     origin : allowedOrigin,
+//     method : ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials : true
+// }))
 app.use(cors({
-    origin : process.env.FRONTEND_URL,
-    method : ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials : true
-}))
-
+    origin: allowedOrigin, // Set the allowed origin (no wildcards here)
+    credentials: true, // Allow credentials like cookies or HTTP authentication
+  }));
 
 app.use(express.json())
 app.use(cookieParser())
